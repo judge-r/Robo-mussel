@@ -1,11 +1,11 @@
 //-------------------------------------------------------------------------------
-// This is a test sketch for the DLS 2.0 shield
-// Dead Bug Protorypes
-// 07.02.2014
+/* This is a sketch for a One-Wire 2-sensor Type K thermocouple low-power temperature logger using the Arduino UNO R3 and 
+DeadBug 2.0 shield developed by Dead Bug Prototypes: https://www.tindie.com/products/Dead_Bug_Prototypes/extreme-low
+-power-data-logging-shield-for-arduino/*/
+/*The temperature sampling interval is set to 30 seconds and the logger completely powers off in between samples. This logger
+runs on a 9V Energizer Ultimate Lithium battery but a battery from 6-10V is compatible with the shield*/
+// 2/21/2018
 //-------------------------------------------------------------------------------
-//boolean value set-up with an if-else statement, create new global variable
-//declare a global variable that is first true and then make a new block and make it false
-
 #include <Wire.h>
 #include <SD.h>
 #include <SPI.h>
@@ -88,7 +88,7 @@ File myFile;
   myFile = SD.open("DATALOG.CSV", FILE_WRITE);
   
   if (myFile) {
-    if (!strLogline) {
+    if (!strLogline) {           				//This may be omitted because I was trying to create a header
     myFile.println("date,time,NucellaTemp,MusselTemp");
     }
     else {
